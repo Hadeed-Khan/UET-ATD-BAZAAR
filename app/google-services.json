@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "700380649274",
+    "project_id": "uet-atd-bazaar",
+    "storage_bucket": "uet-atd-bazaar.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:700380649274:android:2a15692090e03e5b022203",
+        "android_client_info": {
+          "package_name": "com.devrix.uetatdbazaar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEWDP56wdcjioZngGUcXIGumd70cxqIs0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
