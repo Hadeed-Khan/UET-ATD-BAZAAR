@@ -3,18 +3,16 @@ package com.devrix.uetatdbazaar
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.devrix.uetatdbazaar.databinding.ActivityMainBinding
+import com.devrix.uetatdbazaar.databinding.ActivitySplashBinding
 
-class MainActivity : AppCompatActivity() {
+class ActivitySplash : AppCompatActivity() {
 
-    lateinit var binding : ActivityMainBinding
+    lateinit var binding : ActivitySplashBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 

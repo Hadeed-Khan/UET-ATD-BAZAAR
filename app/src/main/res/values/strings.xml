@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">UET ATD BAZAAR</string>
+
+    <string-array name="departments">
+
+        <item>Select Your Department</item>
+        <item>Computer Science</item>
+        <item>Software Enginerring</item>
+        <item>Electronic</item>
+        <item>Architecture</item>
+    </string-array>
+
+    <string-array name="semesters">
+        <item>Select Your Semester</item>
+        <item>1st</item>
+        <item>2nd</item>
+        <item>3rd</item>
+        <item>4th</item>
+        <item>5th</item>
+        <item>6th</item>
+        <item>7th</item>
+        <item>8th</item>
+        <item>9th</item>
+        <item>10th</item>
+    </string-array>
 </resources>
