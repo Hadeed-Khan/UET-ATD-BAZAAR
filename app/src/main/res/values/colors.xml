@@ -13,4 +13,11 @@
         <color name="mist">#F6F7FA</color>
         <color name="line">#E3E7ED</color>
         <color name="error_red">#D0364C</color>
+
+<!--    For Splash Screen -->
+    <color name="splash_top">#7CC3E8</color>
+    <color name="splash_mid">#CBE9F7</color>
+    <color name="splash_tagline">#3C4A5A</color>
+    <color name="white_70">#B3FFFFFF</color>
+
 </resources>

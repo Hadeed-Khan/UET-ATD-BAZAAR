@@ -1,5 +1,6 @@
 package com.devrix.uetatdbazaar.Activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -38,8 +39,16 @@ class ActivityRegister : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         registerStudent()
 
+
+        // For the move the login screen
+        binding.tvLogin.setOnClickListener {
+            var intent = Intent(this@ActivityRegister, ActivityRegister::class.java)
+            startActivity(intent)
+        }
+
     }
 
+ // This function is for the creating the account
     fun registerStudent(){
 
         binding.btnRegister.setOnClickListener {
@@ -119,6 +128,7 @@ class ActivityRegister : AppCompatActivity() {
     return true
     }
 
+    // For Clear All Fields
     fun clearInput(){
         binding.etName.text?.clear()
         binding.deptSP.setSelection(0)
