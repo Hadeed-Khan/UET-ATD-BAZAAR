@@ -65,6 +65,12 @@ class ActivityLogin : AppCompatActivity() {
             loginAccount()
         }
 
+        // For Move to forgot Password Screen
+        binding.tvForgot.setOnClickListener {
+            startActivity(Intent(this@ActivityLogin, ActivityForgot::class.java))
+            finish()
+        }
+
     }
 
     fun loginAccount(){

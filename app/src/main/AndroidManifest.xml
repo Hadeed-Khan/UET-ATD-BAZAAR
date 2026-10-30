@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UETATDBAZAAR">
         <activity
+            android:name=".Activities.ActivityForgot"
+            android:exported="false" />
+        <activity
             android:name=".Activities.ActivityHome"
             android:exported="false" />
         <activity
