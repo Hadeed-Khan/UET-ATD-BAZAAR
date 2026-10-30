@@ -1,5 +1,6 @@
 package com.devrix.uetatdbazaar.Activities
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -21,8 +22,21 @@ class ActivityLogin : AppCompatActivity() {
         setContentView(binding.root)
 
 
+        initializeEveryThing()
 
 
+
+    }
+    // My owns Functions
+
+    fun initializeEveryThing(){
+
+
+        // for Move the Registration Activity
+        binding.btnCreateAccount.setOnClickListener {
+            startActivity(Intent(this@ActivityLogin, ActivityRegister::class.java))
+            finish()
+        }
 
     }
 }

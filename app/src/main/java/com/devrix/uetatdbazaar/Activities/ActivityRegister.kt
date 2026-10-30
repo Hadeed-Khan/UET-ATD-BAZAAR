@@ -42,8 +42,9 @@ class ActivityRegister : AppCompatActivity() {
 
         // For the move the login screen
         binding.tvLogin.setOnClickListener {
-            var intent = Intent(this@ActivityRegister, ActivityRegister::class.java)
+            var intent = Intent(this@ActivityRegister, ActivityLogin::class.java)
             startActivity(intent)
+            finish()
         }
 
     }
@@ -70,6 +71,8 @@ class ActivityRegister : AppCompatActivity() {
                             Toast.makeText(this@ActivityRegister, "Account Created..", Toast.LENGTH_SHORT).show()
                             binding.btnRegister.isEnabled = true
                             auth.signOut()
+                            startActivity(Intent(this@ActivityRegister, ActivityLogin::class.java))
+                            finish()
                         }
 
 
