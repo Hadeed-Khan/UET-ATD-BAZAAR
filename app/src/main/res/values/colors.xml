@@ -20,4 +20,7 @@
     <color name="splash_tagline">#3C4A5A</color>
     <color name="white_70">#B3FFFFFF</color>
 
+<!--    For Login-->
+    <color name="login_top">#EAF6FC</color>
+
 </resources>
