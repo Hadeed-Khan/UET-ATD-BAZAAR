@@ -2,6 +2,7 @@ package com.devrix.uetatdbazaar.Activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -9,10 +10,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.devrix.uetatdbazaar.ApplicationClass.NetworkClass
+import com.devrix.uetatdbazaar.Models.Student
 import com.devrix.uetatdbazaar.R
 import com.devrix.uetatdbazaar.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class ActivityRegister : AppCompatActivity() {
 
@@ -20,6 +24,8 @@ class ActivityRegister : AppCompatActivity() {
     lateinit var binding: ActivityRegisterBinding
     lateinit var networkClass: NetworkClass
     lateinit var auth: FirebaseAuth
+    lateinit var database: FirebaseDatabase
+    lateinit var ref : DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +43,7 @@ class ActivityRegister : AppCompatActivity() {
 
         networkClass = NetworkClass(this@ActivityRegister)
         auth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance("https://uet-atd-bazaar-default-rtdb.europe-west1.firebasedatabase.app/")
         registerStudent()
 
 
@@ -60,19 +67,23 @@ class ActivityRegister : AppCompatActivity() {
 
                     var email = binding.etEmail.text.toString().trim()
                     var password = binding.etPassword.text.toString().trim()
+                    var name = binding.etName.text.toString().trim()
+                    var department = binding.deptSP.selectedItem.toString()
+                    var semester = binding.semesterSP.selectedItem.toString()
+                    var phoneNumber = binding.etPhone.text.toString().trim()
 
                     binding.progress.visibility = View.VISIBLE
                     binding.btnRegister.isEnabled = false
                     auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener { task ->
-                        binding.progress.visibility = View.GONE
+
 
                         clearInput()
                         if (task.isSuccessful){
-                            Toast.makeText(this@ActivityRegister, "Account Created..", Toast.LENGTH_SHORT).show()
                             binding.btnRegister.isEnabled = true
-                            auth.signOut()
-                            startActivity(Intent(this@ActivityRegister, ActivityLogin::class.java))
-                            finish()
+                            // Enter Students Data into Firebase Database
+                            var userUid = auth.currentUser?.uid.toString()
+                            insertStudent(userUid,name,department,semester,phoneNumber)
+
                         }
 
 
@@ -144,6 +155,31 @@ class ActivityRegister : AppCompatActivity() {
         binding.phoneLayout.error = null
         binding.emailLayout.error = null
         binding.passwordLayout.error = null
+    }
+
+    fun insertStudent(uid : String,name : String, department : String , semester : String , phoneNumber : String) {
+
+        ref = database.getReference("Students")
+
+
+        var student = Student(uid,name,department,semester,phoneNumber)
+        ref.child(uid).setValue(student).addOnSuccessListener {
+            Toast.makeText(this@ActivityRegister, "Account created", Toast.LENGTH_SHORT).show()
+            clearInput()
+            startActivity(Intent(this@ActivityRegister, ActivityLogin::class.java))
+            auth.signOut()
+            binding.progress.visibility = View.GONE
+            finish()
+
+        }.addOnFailureListener { e ->
+            binding.progress.visibility = View.GONE
+            binding.btnRegister.isEnabled = true
+            Log.e("FIREBASE", "Database write failed: ${e.message}")
+            Toast.makeText(this@ActivityRegister, "Data not saved: ${e.message}", Toast.LENGTH_LONG).show()
+        }
+
+
+
     }
 
 }
