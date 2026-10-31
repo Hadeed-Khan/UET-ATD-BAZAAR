@@ -14,6 +14,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import kotlin.concurrent.timer
 
 class ActivityForgot : AppCompatActivity() {
@@ -97,6 +98,7 @@ class ActivityForgot : AppCompatActivity() {
         }.addOnFailureListener { e ->
             setLoading(false)
             val message = when (e) {
+                is FirebaseAuthInvalidUserException -> "No account found with this email."
                 is FirebaseNetworkException -> "No internet connection. Please try again."
                 is FirebaseTooManyRequestsException -> "Too many attempts. Try again later."
                 else -> "Could not send reset email. Please try again."
