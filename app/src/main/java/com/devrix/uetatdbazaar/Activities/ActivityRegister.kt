@@ -9,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import com.devrix.uetatdbazaar.ApplicationClass.NetworkClass
 import com.devrix.uetatdbazaar.Models.Student
 import com.devrix.uetatdbazaar.R
@@ -53,6 +54,18 @@ class ActivityRegister : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
+            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            val ime = insets.getInsets(WindowInsetsCompat.Type.ime())
+            v.updatePadding(
+                top = bars.top,
+                bottom = maxOf(bars.bottom, ime.bottom)
+            )
+            insets
+        }
+
 
     }
 
