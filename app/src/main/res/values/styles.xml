@@ -64,4 +64,34 @@
         <item name="android:minHeight">50dp</item>
     </style>
 
+<!--    For Home Screen-->
+    <style name="CB.Chip" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/chip_bg</item>
+        <item name="android:textColor">@color/chip_text</item>
+        <item name="chipStrokeColor">@color/line</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="checkedIconVisible">false</item>
+        <item name="chipIconVisible">false</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="rippleColor">@color/rust_tint</item>
+    </style>
+
+    <style name="CB.Nav.Indicator" parent="">
+        <item name="android:color">@color/rust_tint</item>
+        <item name="android:width">64dp</item>
+        <item name="android:height">32dp</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Material3.Corner.Full</item>
+    </style>
+
+    <style name="CB.Fab" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">@color/rust</item>
+        <item name="tint">@android:color/white</item>
+        <item name="shapeAppearanceOverlay">@style/CB.Fab.Shape</item>
+    </style>
+    <style name="CB.Fab.Shape">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">18dp</item>
+    </style>
+
 </resources>

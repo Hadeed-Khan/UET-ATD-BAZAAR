@@ -16,6 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UETATDBAZAAR">
         <activity
+            android:name=".Activities.ActivityItem"
+            android:exported="false" />
+        <activity
             android:name=".Activities.ActivityForgot"
             android:exported="false" />
         <activity
@@ -26,8 +29,8 @@
             android:exported="false" />
         <activity
             android:name=".Activities.ActivityRegister"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ActivitySplash"
             android:exported="true">
